@@ -1,5 +1,4 @@
 import numpy
-from numpy import array
 
 
 class FeedForwardNetwork(object):
@@ -62,18 +61,3 @@ class FeedForwardNetwork(object):
 
     def get_output(self):
         return self.out_output
-
-    def shutdown(self):
-        with open("ffn.txt", "w+") as file:
-            file.write(str([self.in_nodes, self.hidden_nodes, self.out_nodes, self.hidden_weights, self.out_weights]))
-
-    def startup(self):
-        with open("ffn.txt", "r") as file:
-            raw = file.read()
-            raw = eval(raw)
-
-        self.in_nodes = raw[0]
-        self.hidden_nodes = raw[1]
-        self.out_nodes = raw[2]
-        self.hidden_weights = raw[3]
-        self.out_weights = raw[4]
